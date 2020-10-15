@@ -3,7 +3,7 @@ import mapMarkerImg from "../images/map-marker.svg";
 import { Link } from "react-router-dom";
 import { FiPlus } from "react-icons/fi";
 import "../styles/pages/orphanages-map.css";
-import { Map, TileLayer } from "react-leaflet";
+import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 function OrphanagesMap() {
@@ -29,6 +29,13 @@ function OrphanagesMap() {
         <TileLayer
           url={`https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
         />
+        <Marker position={[-15.8100467, -48.13]}>
+          <Popup>
+            <span>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </span>
+          </Popup>
+        </Marker>
       </Map>
       <Link to="" className="create-orphanage">
         <FiPlus size={32} color="#FFF" />
