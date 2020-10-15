@@ -5,6 +5,14 @@ import { FiPlus } from "react-icons/fi";
 import "../styles/pages/orphanages-map.css";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import Leaflet from "leaflet";
+
+const mapIcon = Leaflet.icon({
+  iconUrl: mapMarkerImg,
+  iconSize: [50, 68],
+  iconAnchor: [29, 68],
+  popupAnchor: [170, 2],
+});
 
 function OrphanagesMap() {
   return (
@@ -29,11 +37,14 @@ function OrphanagesMap() {
         <TileLayer
           url={`https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
         />
-        <Marker position={[-15.8100467, -48.13]}>
-          <Popup>
-            <span>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </span>
+        <Marker position={[-15.8100467, -48.13]} icon={mapIcon}>
+          <Popup
+            closeButton={false}
+            minWidth={240}
+            maxWidth={240}
+            className="map-popup"
+          >
+            Lar das apradas
           </Popup>
         </Marker>
       </Map>
